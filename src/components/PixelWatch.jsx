@@ -5,6 +5,9 @@ import OrbitFace      from './OrbitFace'
 import NeonFace       from './NeonFace'
 import RetroFace      from './RetroFace'
 import InfographFace  from './InfographFace'
+import SolarFace      from './SolarFace'
+import TypographFace  from './TypographFace'
+import ChronoFace     from './ChronoFace'
 import './PixelWatch.css'
 
 const FACE_MAP = {
@@ -15,6 +18,9 @@ const FACE_MAP = {
   neon:       NeonFace,
   retro:      RetroFace,
   infograph:  InfographFace,
+  solar:      SolarFace,
+  typograph:  TypographFace,
+  chrono:     ChronoFace,
 }
 
 export default function PixelWatch({ time, theme, faceId, photo, showSeconds }) {

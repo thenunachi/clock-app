@@ -104,6 +104,55 @@ function FaceIcon({ faceId, theme }) {
     </svg>
   )
 
+  if (faceId === 'solar') return (
+    <svg width={56} height={56} viewBox="0 0 56 56">
+      <circle cx={C} cy={C} r={22} fill="none" stroke={acc} strokeWidth="1" opacity="0.35" />
+      {Array.from({ length: 16 }, (_, i) => {
+        const isMaj = i % 4 === 0
+        const r = (i * 22.5 - 90) * Math.PI / 180
+        const r1 = isMaj ? 20 : 21, r2 = isMaj ? 15 : 18
+        return <line key={i}
+          x1={C + r1 * Math.cos(r)} y1={C + r1 * Math.sin(r)}
+          x2={C + r2 * Math.cos(r)} y2={C + r2 * Math.sin(r)}
+          stroke={isMaj ? acc : acc + '77'} strokeWidth={isMaj ? 2 : 1} strokeLinecap="round" />
+      })}
+      <line x1={C} y1={C} x2={C} y2={C - 13} stroke={hnd} strokeWidth="4" strokeLinecap="round" />
+      <line x1={C} y1={C} x2={C + 10} y2={C - 6} stroke={hnd} strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx={C} cy={C} r="4" fill={acc} />
+      <circle cx={C} cy={C} r="2" fill="rgba(0,0,0,0.4)" />
+    </svg>
+  )
+
+  if (faceId === 'typograph') return (
+    <svg width={56} height={56} viewBox="0 0 56 56">
+      <circle cx={C} cy={C} r={22} fill="none" stroke={acc} strokeWidth="1" opacity="0.25" />
+      <line x1={C - 12} y1={C - 16} x2={C + 12} y2={C - 16} stroke={acc} strokeWidth="1" opacity="0.5" />
+      <text x={C} y={C - 2} textAnchor="middle" dominantBaseline="central"
+        fill={hnd} fontSize="26" fontWeight="700" fontFamily="system-ui" letterSpacing="-1">9</text>
+      <text x={C} y={C + 14} textAnchor="middle" dominantBaseline="central"
+        fill={acc} fontSize="9" fontWeight="300" letterSpacing="3" fontFamily="system-ui">41</text>
+      <line x1={C - 12} y1={C + 19} x2={C + 12} y2={C + 19} stroke={acc} strokeWidth="1" opacity="0.5" />
+    </svg>
+  )
+
+  if (faceId === 'chrono') return (
+    <svg width={56} height={56} viewBox="0 0 56 56">
+      <circle cx={C} cy={C} r={22} fill="none" stroke={acc} strokeWidth="1.5" opacity="0.4" />
+      {[0,30,60,90,120,150,180,210,240,270,300,330].map((d, i) => {
+        const r = (d - 90) * Math.PI / 180
+        return <line key={i}
+          x1={C + 22 * Math.cos(r)} y1={C + 22 * Math.sin(r)}
+          x2={C + (i % 3 === 0 ? 17 : 19) * Math.cos(r)} y2={C + (i % 3 === 0 ? 17 : 19) * Math.sin(r)}
+          stroke={acc} strokeWidth={i % 3 === 0 ? 1.8 : 0.8} strokeLinecap="round" />
+      })}
+      <line x1={C} y1={C} x2={C} y2={C - 14} stroke={hnd} strokeWidth="3.5" strokeLinecap="round" />
+      <line x1={C} y1={C} x2={C + 12} y2={C - 6} stroke={hnd} strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx={C} cy={C + 13} r={6} fill="none" stroke={acc} strokeWidth="1.2" opacity="0.65" />
+      <line x1={C} y1={C + 13} x2={C} y2={C + 8} stroke={acc} strokeWidth="1" strokeLinecap="round" />
+      <circle cx={C} cy={C} r="2.5" fill={acc} />
+    </svg>
+  )
+
   return null
 }
 

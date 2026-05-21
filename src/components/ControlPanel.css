@@ -78,9 +78,9 @@
 
 /* Color swatches */
 .cp-themes {
-  display: flex;
-  justify-content: space-between;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px 4px;
 }
 
 .cp-theme-col {
@@ -88,12 +88,11 @@
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  flex: 1;
 }
 
 .cp-swatch {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -106,8 +105,8 @@
 .cp-swatch.active { transform: scale(1.08); }
 
 .cp-swatch-inner {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;

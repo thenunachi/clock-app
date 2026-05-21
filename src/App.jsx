@@ -9,6 +9,10 @@ export const THEMES = [
   { id: 'porcelain',name: 'Porcelain',case: '#c2bdb8', band: '#d4cfc9', screen: '#1a1a1a', accent: '#e0e0e0', hand: '#ffffff', text: '#e0e0e0', marker: '#909090' },
   { id: 'coral',    name: 'Coral',    case: '#b87060', band: '#8c3820', screen: '#0f0400', accent: '#ffb4a2', hand: '#fff2ee', text: '#ffe0d0', marker: '#e07060' },
   { id: 'bay',      name: 'Bay',      case: '#587898', band: '#2c4060', screen: '#010810', accent: '#90c4f8', hand: '#d0e8ff', text: '#b8d4f0', marker: '#5888b0' },
+  { id: 'midnight', name: 'Midnight', case: '#1e2844', band: '#0c1428', screen: '#020510', accent: '#e0eaff', hand: '#ffffff', text: '#c8d8ff', marker: '#5870b0' },
+  { id: 'forest',   name: 'Forest',   case: '#2a4228', band: '#162014', screen: '#040a04', accent: '#b8c848', hand: '#e8f0c0', text: '#c8d8a0', marker: '#587848' },
+  { id: 'rose',     name: 'Rose',     case: '#c88880', band: '#9c5850', screen: '#0f0604', accent: '#ffb8c8', hand: '#fff0f4', text: '#ffe0e8', marker: '#d08898' },
+  { id: 'arctic',   name: 'Arctic',   case: '#b0cce0', band: '#7099b8', screen: '#040810', accent: '#80d8ff', hand: '#d8f4ff', text: '#b0e8ff', marker: '#4888b0' },
 ]
 
 export const FACES = [
@@ -19,6 +23,9 @@ export const FACES = [
   { id: 'neon',      name: 'Neon'       },
   { id: 'retro',     name: 'Retro'      },
   { id: 'infograph', name: 'Infograph'  },
+  { id: 'solar',     name: 'Solar'      },
+  { id: 'typograph', name: 'Typograph'  },
+  { id: 'chrono',    name: 'Chrono'     },
 ]
 
 export default function App() {
