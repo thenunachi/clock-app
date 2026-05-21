@@ -1,0 +1,92 @@
+.watch-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.watch-body {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8));
+}
+
+/* Lugs */
+.lug {
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+.lug-tl { top: -10px; left: 60px; transform: rotate(-15deg); }
+.lug-tr { top: -10px; right: 60px; transform: rotate(15deg); }
+.lug-bl { bottom: -10px; left: 60px; transform: rotate(15deg); }
+.lug-br { bottom: -10px; right: 60px; transform: rotate(-15deg); }
+
+/* Crown (winding knob) */
+.crown {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 36px;
+  border-radius: 3px;
+  opacity: 0.9;
+  z-index: 2;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+}
+
+.watch-face {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid var(--bezel, #888);
+}
+
+.photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  border-radius: 50%;
+}
+
+.watch-svg {
+  position: relative;
+  z-index: 1;
+}
+
+.digital-readout {
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px 24px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.digital-time {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+}
+
+.digital-date {
+  font-size: 0.8rem;
+  font-family: monospace;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
