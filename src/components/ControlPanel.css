@@ -168,6 +168,27 @@
   padding: 2px 0;
 }
 
+/* Size / shape pill buttons */
+.cp-btn-row {
+  display: flex;
+  gap: 5px;
+}
+
+.cp-pill {
+  flex: 1;
+  padding: 5px 4px;
+  border-radius: 8px;
+  border: 1.5px solid;
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.cp-pill:hover { opacity: 0.8; }
+
 /* Toggle */
 .cp-toggle {
   width: 44px;

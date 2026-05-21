@@ -26,6 +26,8 @@ export const FACES = [
   { id: 'solar',     name: 'Solar'      },
   { id: 'typograph', name: 'Typograph'  },
   { id: 'chrono',    name: 'Chrono'     },
+  { id: 'weather',   name: 'Weather'    },
+  { id: 'astro',     name: 'Astro'      },
 ]
 
 export default function App() {
@@ -34,6 +36,8 @@ export default function App() {
   const [faceId, setFaceId] = useState('bespoke')
   const [photo, setPhoto] = useState(null)
   const [showSeconds, setShowSeconds] = useState(true)
+  const [watchScale, setWatchScale] = useState(1)
+  const [caseShape, setCaseShape] = useState('round')
 
   useEffect(() => {
     const t = setInterval(() => setTime(new Date()), 1000)
@@ -44,13 +48,17 @@ export default function App() {
     <div className="app">
       <div className="app-bg" style={{ background: `radial-gradient(ellipse at 50% 30%, ${theme.band}55 0%, #000 70%)` }} />
       <div className="app-inner">
-        <PixelWatch time={time} theme={theme} faceId={faceId} photo={photo} showSeconds={showSeconds} />
+        <div style={{ transform: `scale(${watchScale})`, transformOrigin: 'center center', transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)' }}>
+          <PixelWatch time={time} theme={theme} faceId={faceId} photo={photo} showSeconds={showSeconds} caseShape={caseShape} />
+        </div>
         <ControlPanel
           themes={THEMES} faces={FACES} theme={theme} faceId={faceId}
           photo={photo} showSeconds={showSeconds}
+          watchScale={watchScale} caseShape={caseShape}
           onTheme={setTheme} onFace={setFaceId}
           onPhoto={setPhoto} onClearPhoto={() => setPhoto(null)}
           onToggleSeconds={() => setShowSeconds(s => !s)}
+          onScale={setWatchScale} onCaseShape={setCaseShape}
           time={time}
         />
       </div>

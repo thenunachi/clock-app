@@ -135,6 +135,34 @@ function FaceIcon({ faceId, theme }) {
     </svg>
   )
 
+  if (faceId === 'weather') return (
+    <svg width={56} height={56} viewBox="0 0 56 56">
+      {/* Sun rays */}
+      {[0,45,90,135,180,225,270,315].map((d,i) => {
+        const a = d*Math.PI/180
+        return <line key={i} x1={C+14*Math.cos(a)} y1={C-10+14*Math.sin(a)} x2={C+18*Math.cos(a)} y2={C-10+18*Math.sin(a)}
+          stroke={acc} strokeWidth="1.8" strokeLinecap="round" opacity="0.7"/>
+      })}
+      <circle cx={C} cy={C-10} r="8" fill={acc} opacity="0.85"/>
+      {/* Cloud */}
+      <path d={`M ${C-14} ${C+12} Q ${C-14} ${C+4} ${C-6} ${C+4} Q ${C-1} ${C-4} ${C+7} ${C+2} Q ${C+16} ${C+2} ${C+16} ${C+12} Z`}
+        fill={hnd} opacity="0.8"/>
+    </svg>
+  )
+
+  if (faceId === 'astro') return (
+    <svg width={56} height={56} viewBox="0 0 56 56">
+      {/* Stars */}
+      {[[8,10],[44,8],[12,36],[48,32],[24,6],[36,42]].map(([x,y],i)=>(
+        <circle key={i} cx={x} cy={y} r="1.2" fill={acc} opacity="0.6"/>
+      ))}
+      {/* Moon crescent */}
+      <path d={`M ${C} ${C-18} A 18 18 0 0 1 ${C} ${C+18} A 12 18 0 0 0 ${C} ${C-18} Z`}
+        fill={hnd} opacity="0.9"/>
+      <circle cx={C} cy={C} r="18" fill="none" stroke={acc} strokeWidth="1" opacity="0.35"/>
+    </svg>
+  )
+
   if (faceId === 'chrono') return (
     <svg width={56} height={56} viewBox="0 0 56 56">
       <circle cx={C} cy={C} r={22} fill="none" stroke={acc} strokeWidth="1.5" opacity="0.4" />
@@ -158,7 +186,9 @@ function FaceIcon({ faceId, theme }) {
 
 export default function ControlPanel({
   themes, faces, theme, faceId, photo, showSeconds,
-  onTheme, onFace, onPhoto, onClearPhoto, onToggleSeconds, time,
+  watchScale, caseShape,
+  onTheme, onFace, onPhoto, onClearPhoto, onToggleSeconds,
+  onScale, onCaseShape, time,
 }) {
   const fileRef = useRef()
   const handleFile = (e) => {
@@ -258,6 +288,47 @@ export default function ControlPanel({
             Upload Photo
           </button>
         )}
+      </div>
+
+      {/* Display */}
+      <div className="cp-section">
+        <div className="cp-label">Display</div>
+
+        {/* Size */}
+        <div className="cp-row" style={{ justifyContent: 'flex-start', gap: 6, alignItems: 'center' }}>
+          <span style={{ color: theme.marker, fontSize: '11px', width: 42, flexShrink: 0 }}>Size</span>
+          <div className="cp-btn-row" style={{ flex: 1 }}>
+            {[{ label: 'S', val: 0.78 }, { label: 'M', val: 1 }, { label: 'L', val: 1.26 }].map(({ label, val }) => (
+              <button key={label} className={`cp-pill ${watchScale === val ? 'active' : ''}`}
+                style={{
+                  background:  watchScale === val ? theme.accent + '18' : theme.screen + '80',
+                  borderColor: watchScale === val ? theme.accent : theme.marker + '30',
+                  color:       watchScale === val ? theme.accent : theme.marker,
+                }}
+                onClick={() => onScale(val)}>
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Shape */}
+        <div className="cp-row" style={{ justifyContent: 'flex-start', gap: 6, alignItems: 'center' }}>
+          <span style={{ color: theme.marker, fontSize: '11px', width: 42, flexShrink: 0 }}>Shape</span>
+          <div className="cp-btn-row" style={{ flex: 1 }}>
+            {[{ label: '○ Round', val: 'round' }, { label: '▢ Square', val: 'square' }].map(({ label, val }) => (
+              <button key={val} className={`cp-pill ${caseShape === val ? 'active' : ''}`}
+                style={{
+                  background:  caseShape === val ? theme.accent + '18' : theme.screen + '80',
+                  borderColor: caseShape === val ? theme.accent : theme.marker + '30',
+                  color:       caseShape === val ? theme.accent : theme.marker,
+                }}
+                onClick={() => onCaseShape(val)}>
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Settings */}
